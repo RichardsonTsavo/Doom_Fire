@@ -13,12 +13,12 @@ abstract class _DoomFireStoreBase with Store {
   @observable
   int fireForce = 7;
   @observable
-  int fireSpeed = 50;
+  int fireSpeed = 80;
   @observable
   bool startFire = false;
 
   void start() {
-    setCanvaSize(value: 35);
+    setCanvaSize(value: 40);
     calculateFirePropagation();
     calculateFirePropagation();
   }
