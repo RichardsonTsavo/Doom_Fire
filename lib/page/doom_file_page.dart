@@ -14,7 +14,7 @@ class _DoomFirePageState extends State<DoomFirePage> {
 
   @override
   void initState() {
-    store.setCanvaSize(value: 35);
+    store.start();
     super.initState();
   }
 

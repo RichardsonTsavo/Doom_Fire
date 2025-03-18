@@ -11,19 +11,21 @@ abstract class _DoomFireStoreBase with Store {
   @observable
   int canvaSize = 30;
   @observable
-  int fireForce = 3;
+  int fireForce = 7;
   @observable
   int fireSpeed = 50;
   @observable
   bool startFire = false;
 
+  void start() {
+    setCanvaSize(value: 35);
+    calculateFirePropagation();
+    calculateFirePropagation();
+  }
+
   @action
   void setStartFire() {
     startFire = !startFire;
-    if (startFire) {
-      calculateFirePropagation();
-      calculateFirePropagation();
-    }
   }
 
   @action
@@ -71,11 +73,7 @@ abstract class _DoomFireStoreBase with Store {
       }
     }
     await Future.delayed(Duration(milliseconds: fireSpeed));
-    if (startFire) {
-      calculateFirePropagation();
-    } else {
-      createFireDataStructure();
-    }
+    calculateFirePropagation();
   }
 
   @action
@@ -91,9 +89,10 @@ abstract class _DoomFireStoreBase with Store {
     newFireIntensity = newFireIntensity < 0 ? 0 : newFireIntensity;
 
     if ((currentPixelIndex - decay) > 0) {
-      listFirePixel[currentPixelIndex - decay] = newFireIntensity;
+      listFirePixel[currentPixelIndex - decay] =
+          startFire ? newFireIntensity : 0;
     } else {
-      listFirePixel[currentPixelIndex] = newFireIntensity;
+      listFirePixel[currentPixelIndex] = startFire ? newFireIntensity : 0;
     }
   }
 
