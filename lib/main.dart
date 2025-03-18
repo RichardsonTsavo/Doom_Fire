@@ -1,7 +1,10 @@
+import 'package:doom_fire/page/doom_file_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
-import 'app/app_module.dart';
-import 'app/app_widget.dart';
-
-void main() => runApp(ModularApp(module: AppModule(), child: AppWidget()));
+void main() => runApp(
+      const MaterialApp(
+        title: 'Doom Fire',
+        debugShowCheckedModeBanner: false,
+        home: DoomFirePage(),
+      ),
+    );
