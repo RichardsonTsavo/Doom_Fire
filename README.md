@@ -3,6 +3,5 @@
 # Technologies
 
 * Flutter
-* Flutter Modular
 * Mobx
 
